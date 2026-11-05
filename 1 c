@@ -1,0 +1,24 @@
+public class Main {
+    public static void main(String[] args) {
+        String first = "Hello";
+        String second = "Java";
+        System.out.println("String: " + first);
+        System.out.println("Length: " + first.length());
+        System.out.println("Concatenation: " + first + " " + second);
+        System.out.println("Equal to Hello: " + first.equals("Hello"));
+        System.out.println("Equal to Java: " + first.equals(second));
+        System.out.println("Uppercase: " + first.toUpperCase());
+        System.out.println("Lowercase: " + first.toLowerCase());
+    }
+}
+
+/*
+Output:
+String: Hello
+Length: 5
+Concatenation: Hello Java
+Equal to Hello: true
+Equal to Java: false
+Uppercase: HELLO
+Lowercase: hello
+*/
