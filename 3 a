@@ -1,0 +1,22 @@
+interface Greeting {
+    void show();
+}
+
+class Welcome implements Greeting {
+    @Override
+    public void show() {
+        System.out.println("Welcome to Java interfaces.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Greeting greeting = new Welcome();
+        greeting.show();
+    }
+}
+
+/*
+Output:
+Welcome to Java interfaces.
+*/
