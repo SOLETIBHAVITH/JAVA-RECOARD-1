@@ -1,0 +1,37 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Main {
+    public static void main(String[] args) {
+        String url = System.getenv("JAVA_LAB_DB_URL");
+        String user = System.getenv("JAVA_LAB_DB_USER");
+        String password = System.getenv("JAVA_LAB_DB_PASSWORD");
+        if (url == null || user == null || password == null) {
+            System.out.println("Set JAVA_LAB_DB_URL, JAVA_LAB_DB_USER and JAVA_LAB_DB_PASSWORD.");
+            return;
+        }
+        String query = "SELECT roll_no, name, marks FROM students ORDER BY roll_no";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             Statement statement = connection.createStatement();
+             ResultSet records = statement.executeQuery(query)) {
+            System.out.println("Roll No | Name | Marks");
+            while (records.next()) {
+                System.out.println(records.getInt("roll_no") + " | "
+                        + records.getString("name") + " | " + records.getInt("marks"));
+            }
+        } catch (SQLException exception) {
+            System.out.println("Database error: " + exception.getMessage());
+        }
+    }
+}
+
+/*
+Output:
+JDBC retrieval was not verified: no MySQL connection, credentials or external Connector/J driver were configured. The missing-configuration message was verified.
+
+Verified run without database configuration:
+Set JAVA_LAB_DB_URL, JAVA_LAB_DB_USER and JAVA_LAB_DB_PASSWORD.
+*/
