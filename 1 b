@@ -1,0 +1,27 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {10, 15, 20, 25};
+        int sum = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+            if (numbers[i] % 2 == 0) {
+                System.out.println(numbers[i] + " is even");
+            } else {
+                System.out.println(numbers[i] + " is odd");
+            }
+        }
+        double average = (double) sum / numbers.length;
+        System.out.println("Sum: " + sum);
+        System.out.println("Average: " + average);
+    }
+}
+
+/*
+Output:
+10 is even
+15 is odd
+20 is even
+25 is odd
+Sum: 70
+Average: 17.5
+*/
