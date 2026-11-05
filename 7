@@ -1,0 +1,39 @@
+ import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+
+public class Main {
+    public static void main(String[] args) {
+        Path file = Paths.get("lab-output.txt");
+        try {
+            try (BufferedWriter writer = Files.newBufferedWriter(file,
+                    StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW)) {
+                writer.write("Welcome to Java file handling.");
+                writer.newLine();
+            }
+            System.out.println("File created and written: " + file);
+            try (BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                }
+            }
+        } catch (IOException exception) {
+            System.out.println("File error: " + exception.getMessage());
+        }
+    }
+}
+
+/*
+Output:
+File created and written: lab-output.txt
+Welcome to Java file handling.
+
+The run creates lab-output.txt in the working directory.
+If that file already exists, the program reports a file error and preserves it.
+*/
