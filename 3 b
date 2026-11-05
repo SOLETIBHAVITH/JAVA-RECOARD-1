@@ -1,0 +1,34 @@
+import java.util.Arrays;
+
+class Student implements Comparable<Student> {
+    String name;
+    int marks;
+
+    Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+
+    @Override
+    public int compareTo(Student other) {
+        return Integer.compare(marks, other.marks);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student[] students = {new Student("Ravi", 78), new Student("Meena", 92),
+                              new Student("Sara", 66)};
+        Arrays.sort(students);
+        for (Student student : students) {
+            System.out.println(student.name + ": " + student.marks);
+        }
+    }
+}
+
+/*
+Output:
+Sara: 66
+Ravi: 78
+Meena: 92
+*/
