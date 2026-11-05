@@ -1,0 +1,25 @@
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+
+// <applet code="Main.class" width="360" height="180"></applet>
+public class Main extends Applet {
+    @Override
+    public void init() {
+        setBackground(Color.WHITE);
+    }
+
+    @Override
+    public void paint(Graphics graphics) {
+        graphics.setColor(Color.BLUE);
+        graphics.drawString("Welcome to Java Applets", 40, 60);
+        graphics.drawRect(40, 80, 220, 50);
+    }
+}
+
+/*
+Output:
+Verified with Temurin JDK 8 appletviewer.
+A white applet displays blue text "Welcome to Java Applets" and a blue outlined rectangle.
+The viewer reports "Applet started."
+*/
